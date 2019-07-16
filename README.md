@@ -1,14 +1,7 @@
 This repository contains code in Python and R for analysing feedback from Maths Support Centres using Naural Language Processing Techniques (word clouds, topic models and hierarcical clustering).
 
 
-PYTHON
-
-Requirements:
-
-ADD
-
-
-Files: 
+PYTHON FILES: 
 
 make_word_clouds.py  - run using python make_word_clouds.py infile.csv
 
