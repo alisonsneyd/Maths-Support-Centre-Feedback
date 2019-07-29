@@ -15,12 +15,11 @@ Run'python make_word_clouds.py -h' for help.
 # load external modules 
 import argparse
 import pandas as pd
-from nltk.stem import WordNetLemmatizer 
-from nltk import word_tokenize
 from sklearn.feature_extraction.text import *
 from PIL import Image
 from wordcloud import WordCloud, ImageColorGenerator
 import matplotlib.pyplot as plt
+from utils.lemmatiser import lemmatiser
 
 
 # set up commandline arguments 
@@ -67,25 +66,7 @@ def clean_comments(df):
 docs = clean_comments(df)
 
 
-# function to lemmatise words in comments
-# ref https://www.nltk.org/_modules/nltk/stem/wordnet.html 
-def lemmatiser(unlemmatised_data): 
-    lemmatised_data = []
-   
-    for item in unlemmatised_data:
-        lemmatised_item = ""  
-        item = item.replace("-", " ")
-        words = word_tokenize(item)
-              
-        for word in words: 
-            if word != WordNetLemmatizer().lemmatize(word.lower()): # noun lemmatiser
-                lemmastised_word = WordNetLemmatizer().lemmatize(word.lower())
-            else: # verb lemmatiser
-                lemmastised_word = WordNetLemmatizer().lemmatize(word.lower(), "v") 
-            lemmatised_item = lemmatised_item + lemmastised_word + " "
-        lemmatised_data.append(lemmatised_item)
-        
-    return lemmatised_data  
+# lemmatise comments
 lemmatised_docs = lemmatiser(docs)
                                     
                                   

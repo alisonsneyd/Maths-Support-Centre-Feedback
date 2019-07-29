@@ -16,12 +16,10 @@ Run'python topic_modelling.py -h' for help.
 # load external modules 
 import argparse
 import pandas as pd
-from nltk.stem import WordNetLemmatizer 
-from nltk import word_tokenize
 from sklearn.feature_extraction.text import *
 from sklearn.decomposition import LatentDirichletAllocation
 import numpy as np
-
+from utils.lemmatiser import lemmatiser
 
 
 # set up commandline arguments 
@@ -78,25 +76,7 @@ def clean_comments(df):
 docs = clean_comments(df)
 
 
-# function to lemmatise words in comments
-# ref https://www.nltk.org/_modules/nltk/stem/wordnet.html 
-def lemmatiser(unlemmatised_data): 
-    lemmatised_data = []
-   
-    for item in unlemmatised_data:
-        lemmatised_item = ""  
-        item = item.replace("-", " ")
-        words = word_tokenize(item)
-              
-        for word in words: 
-            if word != WordNetLemmatizer().lemmatize(word.lower()): # noun lemmatiser
-                lemmastised_word = WordNetLemmatizer().lemmatize(word.lower())
-            else: # verb lemmatiser
-                lemmastised_word = WordNetLemmatizer().lemmatize(word.lower(), "v") 
-            lemmatised_item = lemmatised_item + lemmastised_word + " "
-        lemmatised_data.append(lemmatised_item)
-        
-    return lemmatised_data  
+# lemmatise docs
 lemmatised_docs = lemmatiser(docs)
 
 
