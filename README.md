@@ -1,4 +1,4 @@
-This repository contains code in Python and R for analysing feedback from Maths Support Centres using Naural Language Processing Techniques (word clouds, topic models and hierarcical clustering).
+This repository contains code in Python and R for analysing feedback from Maths Support Centres using Natural Language Processing Techniques (word clouds, topic models and hierarchical clustering).
 
 
 PYTHON FILES: 
